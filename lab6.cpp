@@ -1,14 +1,14 @@
 #include <iostream>
-#include <fstream>  // Include this header for file handling
+#include <fstream>  
 
 const int MAX_SIZE = 100;
 
-// Function prototypes
-void readMatrix(int matrix[MAX_SIZE][MAX_SIZE], int& size, std::ifstream& inputFile);  // Add std::ifstream argument
-void printMatrix(const int matrix[MAX_SIZE][MAX_SIZE], int size);
-void addMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size);
-void multiplyMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size);
-void subtractMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size);
+
+void reading(int matrix[MAX_SIZE][MAX_SIZE], int& size, std::ifstream& inputFile);  
+void printing(const int matrix[MAX_SIZE][MAX_SIZE], int size);
+void adding(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size);
+void multiplying(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size);
+void subtracting(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size);
 
 int main() {
     int size;
@@ -28,46 +28,46 @@ int main() {
     std::cout << "Gregory Markose" << std::endl;
     std::cout << "Lab #6: Matrix manipulation" << std::endl;
     std::cout << "Matrix A:" << std::endl;
-    readMatrix(matrixA, size, inputFile); // Passing the inputFile as a parameter
-    printMatrix(matrixA, size);
+    reading(matrixA, size, inputFile); // Passing the inputFile as a parameter
+    printing(matrixA, size);
 
     std::cout << "Matrix B:" << std::endl;
-    readMatrix(matrixB, size, inputFile); // Passing the inputFile as a parameter
-    printMatrix(matrixB, size);
+    reading(matrixB, size, inputFile); // Passing the inputFile as a parameter
+    printing(matrixB, size);
 
     // Adding both matrices (A+B)
-    addMatrices(matrixA, matrixB, resultMatrix, size);
+    adding(matrixA, matrixB, resultMatrix, size);
     std::cout << "Matrix Sum (A + B):" << std::endl;
-    printMatrix(resultMatrix, size);
+    printing(resultMatrix, size);
 
     // Multiplying both matrices (A*B)
-    multiplyMatrices(matrixA, matrixB, resultMatrix, size);
+    multiplying(matrixA, matrixB, resultMatrix, size);
     std::cout << "Matrix Product (A * B):" << std::endl;
-    printMatrix(resultMatrix, size);
+    printing(resultMatrix, size);
 
     // Subtracting matrix A from matrix B
-    subtractMatrices(matrixA, matrixB, resultMatrix, size);
+    subtracting(matrixA, matrixB, resultMatrix, size);
     std::cout << "Matrix Difference (A - B):" << std::endl;
-    printMatrix(resultMatrix, size);
+    printing(resultMatrix, size);
 
-    inputFile.close(); // Close the input file
+    inputFile.close(); 
 
     return 0;
 }
 
+// All the functions
 
 // This is the funtion to read the input file
-
-void readMatrix(int matrix[MAX_SIZE][MAX_SIZE], int& size, std::ifstream& inputFile) {
+void reading(int matrix[MAX_SIZE][MAX_SIZE], int& size, std::ifstream& inputFile) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            inputFile >> matrix[i][j];  // Read from the input file
+            inputFile >> matrix[i][j];  
         }
     }
 }
 
 // This function will print the matrices
-void printMatrix(const int matrix[MAX_SIZE][MAX_SIZE], int size) {
+void printing(const int matrix[MAX_SIZE][MAX_SIZE], int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             std::cout << "  " << matrix[i][j];
@@ -77,7 +77,7 @@ void printMatrix(const int matrix[MAX_SIZE][MAX_SIZE], int size) {
 }
 
 // This function will add both the matrices
-void addMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size) {
+void adding(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             result[i][j] = matrix1[i][j] + matrix2[i][j];
@@ -86,7 +86,7 @@ void addMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SI
 }
 
 // This function will multiply both matrices
-void multiplyMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size) {
+void multiplying(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             result[i][j] = 0;
@@ -98,7 +98,7 @@ void multiplyMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[M
 }
 
 // This function will subtract both the matrices
-void subtractMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size) {
+void subtracting(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             result[i][j] = matrix1[i][j] - matrix2[i][j];
