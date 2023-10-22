@@ -28,11 +28,11 @@ int main() {
     std::cout << "Gregory Markose" << std::endl;
     std::cout << "Lab #6: Matrix manipulation" << std::endl;
     std::cout << "Matrix A:" << std::endl;
-    reading(matrixA, size, inputFile); // Passing the inputFile as a parameter
+    reading(matrixA, size, inputFile); 
     printing(matrixA, size);
 
     std::cout << "Matrix B:" << std::endl;
-    reading(matrixB, size, inputFile); // Passing the inputFile as a parameter
+    reading(matrixB, size, inputFile); 
     printing(matrixB, size);
 
     // Adding both matrices (A+B)
